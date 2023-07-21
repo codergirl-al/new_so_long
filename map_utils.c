@@ -6,36 +6,35 @@
 /*   By: apeposhi <apeposhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 15:40:53 by apeposhi          #+#    #+#             */
-/*   Updated: 2023/06/17 15:23:33 by apeposhi         ###   ########.fr       */
+/*   Updated: 2023/07/21 18:28:11 by apeposhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/so_long.h"
 
-int	ft_count_moves(t_data *game_data)
+int	ft_count_moves(t_data *g_d)
 {
 	static int	count = 0;
 	char		*output;
-	
+
 	output = ft_itoa(count);
 	if (!output)
-		exit(ft_free(game_data, ft_print_error("malloc failed", 1)));
-	mlx_string_put(game_data->mlx, game_data->window, 52, 15, 0x00000000, output);
+		exit(ft_free(g_d, ft_print_error("malloc failed", 1)));
+	mlx_string_put(g_d->mlx, g_d->window, 52, 15, 0x00000000, output);
 	free (output);
-
 	output = ft_itoa(++count);
 	if (!output)
-		exit(ft_free(game_data, ft_print_error("malloc failed", 1)));
-	mlx_string_put(game_data->mlx, game_data->window, 52, 15, 0x00FF0000, output);
+		exit(ft_free(g_d, ft_print_error("malloc failed", 1)));
+	mlx_string_put(g_d->mlx, g_d->window, 52, 15, 0x00FF0000, output);
 	free (output);
 	return (0);
 }
 
-static int	ft_count_lines(char *map, t_data *game_data)
+static int	ft_count_lines(char *map, t_data *g_d)
 {
-	size_t lines;
-	int fd;
-	char *current_line;
+	size_t	lines;
+	int		fd;
+	char	*current_line;
 
 	fd = open(map, O_RDONLY);
 	if (fd == -1)
@@ -43,29 +42,34 @@ static int	ft_count_lines(char *map, t_data *game_data)
 	lines = 0;
 	current_line = get_next_line(fd);
 	if (current_line)
-		game_data->map.m_length = ft_strlen(current_line) - 1;
+		g_d->map.m_length = ft_strlen(current_line) - 1;
 	while (current_line)
 	{
 		lines++;
 		free(current_line);
 		current_line = get_next_line(fd);
 	}
-	game_data->map.m_height = lines;
+	g_d->map.m_height = lines;
 	close(fd);
 	return (lines);
 }
 
-static char **ft_get_map_data(char *map, int fd, t_data *game_data)
+char	**ft_handle_return(void)
 {
-	char **map_state;
-	int	i;
-	int	lines;
+	ft_print_error("Couldn't open map file.\n", 1);
+	return (NULL);
+}
 
-	lines = ft_count_lines(map, game_data);
+static char	**ft_get_map_data(char *map, int fd, t_data *g_d)
+{
+	char	**map_state;
+	int		i;
+	int		lines;
+
+	lines = ft_count_lines(map, g_d);
 	if (lines == -1)
 	{
-		ft_print_error("Couldn't open map file.\n", 1);
-		return (NULL);
+		return (ft_handle_return());
 	}
 	map_state = malloc(sizeof(char *) * lines + 1);
 	if (!map_state)
@@ -85,16 +89,16 @@ static char **ft_get_map_data(char *map, int fd, t_data *game_data)
 	return (map_state);
 }
 
-int	ft_read_map(t_data *game_data, char *map)
+int	ft_read_map(t_data *g_d, char *map)
 {
 	int	fd;
 
 	fd = open(map, O_RDONLY);
 	if (!fd)
 		return (ft_print_error("Couldn't open map file.\n", 1));
-	game_data->current_state = ft_get_map_data(map, fd, game_data);
+	g_d->c_state = ft_get_map_data(map, fd, g_d);
 
-	if (game_data->current_state == NULL)
+	if (g_d->c_state == NULL)
 	{
 		close(fd);
 		return (1);

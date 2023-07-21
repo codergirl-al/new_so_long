@@ -6,7 +6,7 @@
 /*   By: apeposhi <apeposhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 09:42:34 by apeposhi          #+#    #+#             */
-/*   Updated: 2023/06/25 17:34:17 by apeposhi         ###   ########.fr       */
+/*   Updated: 2023/07/21 17:44:42 by apeposhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,18 +64,18 @@ void	ft_check(size_t pl_y, size_t pl_x, t_map_cp *map, char **state_copy)
 		ft_check(pl_y - 1, pl_x, map, state_copy);
 }
 
-int	ft_is_map_winnable(t_map *map, char **current_state)
+int	ft_is_map_winnable(t_map *map, char **c_state)
 {
 	char		**state_copy;
 	t_map_cp	map_cp;
 	size_t		i;
 
 	map_cp.exit = map->finish;
-	map_cp.col = map->collectibles;
-	state_copy = ft_copy_state(map, current_state);
+	map_cp.col = map->clls;
+	state_copy = ft_copy_state(map, c_state);
 	if (state_copy == NULL)
 		return (ft_print_error("Malloc failed.\n", 1));
-	ft_check(map->y_position, map->x_position, &map_cp, state_copy);
+	ft_check(map->y_p, map->x_p, &map_cp, state_copy);
 	i = 0;
 	while (state_copy[i] != NULL)
 		free(state_copy[i++]);
