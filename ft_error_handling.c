@@ -6,7 +6,7 @@
 /*   By: apeposhi <apeposhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 10:24:31 by apeposhi          #+#    #+#             */
-/*   Updated: 2023/07/21 20:00:35 by apeposhi         ###   ########.fr       */
+/*   Updated: 2023/07/21 21:49:12 by apeposhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ void	ft_cleanup(t_data *g_d)
 {
 	if (g_d->mlx == NULL)
 		return ;
-	mlx_clear_window(g_d->mlx, g_d->window);
-	if (g_d->images.player)
-		mlx_destroy_image(g_d->mlx, g_d->images.player);
-	if (g_d->images.player2)
-		mlx_destroy_image(g_d->mlx, g_d->images.player2);
+	mlx_clear_window(g_d->mlx, g_d->wdw);
+	if (g_d->images.pl)
+		mlx_destroy_image(g_d->mlx, g_d->images.pl);
+	if (g_d->images.pl2)
+		mlx_destroy_image(g_d->mlx, g_d->images.pl2);
 	if (g_d->images.enemy)
 		mlx_destroy_image(g_d->mlx, g_d->images.enemy);
 	if (g_d->images.wall)
@@ -29,27 +29,27 @@ void	ft_cleanup(t_data *g_d)
 		mlx_destroy_image(g_d->mlx, g_d->images.empty);
 	if (g_d->images.cll)
 		mlx_destroy_image(g_d->mlx, g_d->images.cll);
-	if (g_d->images.finish)
-		mlx_destroy_image(g_d->mlx, g_d->images.finish);
+	if (g_d->images.fnsh)
+		mlx_destroy_image(g_d->mlx, g_d->images.fnsh);
 	if (g_d->images.win)
 		mlx_destroy_image(g_d->mlx, g_d->images.win);
 	if (g_d->images.lose)
 		mlx_destroy_image(g_d->mlx, g_d->images.lose);
-	mlx_destroy_window(g_d->mlx, g_d->window);
+	mlx_destroy_window(g_d->mlx, g_d->wdw);
 }
 
 void	ft_init(t_data *g_d)
 {
 	g_d->mlx = NULL;
-	g_d->window = NULL;
+	g_d->wdw = NULL;
 	g_d->c_state = NULL;
 	g_d->images.cll = NULL;
 	g_d->images.empty = NULL;
 	g_d->images.enemy = NULL;
-	g_d->images.finish = NULL;
+	g_d->images.fnsh = NULL;
 	g_d->images.lose = NULL;
-	g_d->images.player2 = NULL;
-	g_d->images.player = NULL;
+	g_d->images.pl2 = NULL;
+	g_d->images.pl = NULL;
 	g_d->images.wall = NULL;
 	g_d->images.win = NULL;
 }

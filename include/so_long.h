@@ -6,7 +6,7 @@
 /*   By: apeposhi <apeposhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:45:57 by apeposhi          #+#    #+#             */
-/*   Updated: 2023/07/21 17:44:42 by apeposhi         ###   ########.fr       */
+/*   Updated: 2023/07/21 21:51:09 by apeposhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,24 +24,24 @@
 
 typedef struct s_map
 {
-	int		player;
+	int		pl;
 	size_t	x_p;
 	size_t	y_p;
-	size_t	finish;
+	size_t	fnsh;
 	size_t	clls;
-	size_t	m_length;
-	size_t	m_height;
+	size_t	l;
+	size_t	h;
 }			t_map;
 
 typedef struct s_images
 {
-	void	*player;
-	void	*player2;
+	void	*pl;
+	void	*pl2;
 	void	*enemy;
 	void	*cll;
 	void	*wall;
 	void	*empty;
-	void	*finish;
+	void	*fnsh;
 	void	*win;
 	void	*lose;
 }	t_images;
@@ -49,8 +49,8 @@ typedef struct s_images
 typedef struct s_data
 {
 	void		*mlx;
-	void		*window;
-	int			image_size;
+	void		*wdw;
+	int			i_s;
 	t_map		map;
 	t_images	images;
 	char		**c_state;

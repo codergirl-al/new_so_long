@@ -6,7 +6,7 @@
 /*   By: apeposhi <apeposhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 20:07:48 by apeposhi          #+#    #+#             */
-/*   Updated: 2023/07/21 17:54:27 by apeposhi         ###   ########.fr       */
+/*   Updated: 2023/07/21 21:25:50 by apeposhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ int	main(int argc, char *argv[])
 	if (ft_initialize(&g_d))
 		return (ft_free(&g_d, 1));
 	printf("%zu\n", g_d.map.clls);
-	mlx_hook(g_d.window, 2, 1L << 0, ft_hooks, &g_d);
-	mlx_hook(g_d.window, 17, 1L << 0, ft_hooks_x, &g_d);
+	mlx_hook(g_d.wdw, 2, 1L << 0, ft_hooks, &g_d);
+	mlx_hook(g_d.wdw, 17, 1L << 0, ft_hooks_x, &g_d);
 	mlx_loop_hook(g_d.mlx, ft_animate, (void *)&g_d);
 	mlx_loop(g_d.mlx);
 	return (ft_free(&g_d, 0));

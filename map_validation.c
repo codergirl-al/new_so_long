@@ -6,7 +6,7 @@
 /*   By: apeposhi <apeposhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 17:59:35 by apeposhi          #+#    #+#             */
-/*   Updated: 2023/07/21 20:05:07 by apeposhi         ###   ########.fr       */
+/*   Updated: 2023/07/21 21:49:12 by apeposhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	ft_check_middle(char c, t_data *g_d, size_t i, size_t j)
 {
-	if (j == 0 || j == g_d->map.m_length - 1)
+	if (j == 0 || j == g_d->map.l - 1)
 	{
 		if (c != '1')
 			return (ft_print_error("Wrong map layout given.\n", 1));
@@ -26,12 +26,12 @@ static int	ft_check_middle(char c, t_data *g_d, size_t i, size_t j)
 			return (ft_print_error("Invalid map. Character not allowed!\n", 1));
 		if (c == 'P')
 		{
-			g_d->map.player += 1;
+			g_d->map.pl += 1;
 			g_d->map.x_p = j;
 			g_d->map.y_p = i;
 		}
-		if (c == 'E' && g_d->map.finish == 0)
-			g_d->map.finish += 1;
+		if (c == 'E' && g_d->map.fnsh == 0)
+			g_d->map.fnsh += 1;
 		if (c == 'C')
 			g_d->map.clls += 1;
 	}
@@ -42,9 +42,9 @@ int	ft_check_map_data(t_map map)
 {
 	if (map.clls == 0)
 		return (ft_print_error("Collectables are missing!\n", 1));
-	if (map.finish != 1)
+	if (map.fnsh != 1)
 		return (ft_print_error("Exactly one E must be given.\n", 1));
-	if (map.player != 1)
+	if (map.pl != 1)
 		return (ft_print_error("Exactly one P must be given.\n", 1));
 	return (0);
 }
@@ -60,9 +60,9 @@ static int	ft_check_map(char **c_state, t_data *g_d)
 		j = 0;
 		while (c_state[i][j] != '\0')
 		{
-			if (g_d->map.m_length != ft_strlen(c_state[i]))
+			if (g_d->map.l != ft_strlen(c_state[i]))
 				return (ft_print_error("Map doesn't have the right size.\n", 1));
-			if (i == 0 || i + 1 == g_d->map.m_height)
+			if (i == 0 || i + 1 == g_d->map.h)
 			{
 				if (c_state[i][j] != '1')
 					return (ft_print_error("Wrong map layout given.\n", 1));
@@ -80,8 +80,8 @@ static int	ft_check_map(char **c_state, t_data *g_d)
 static void	ft_init_map_data(t_map *map)
 {
 	map->clls = 0;
-	map->finish = 0;
-	map->player = 0;
+	map->fnsh = 0;
+	map->pl = 0;
 }
 
 int	ft_validate_map(t_data *g_d)

@@ -6,7 +6,7 @@
 /*   By: apeposhi <apeposhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 15:40:53 by apeposhi          #+#    #+#             */
-/*   Updated: 2023/07/21 20:00:15 by apeposhi         ###   ########.fr       */
+/*   Updated: 2023/07/21 21:33:46 by apeposhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ int	ft_count_moves(t_data *g_d)
 	output = ft_itoa(count);
 	if (!output)
 		exit(ft_free(g_d, ft_print_error("malloc failed", 1)));
-	mlx_string_put(g_d->mlx, g_d->window, 52, 15, 0x00000000, output);
+	mlx_string_put(g_d->mlx, g_d->wdw, 52, 15, 0x00000000, output);
 	free (output);
 	output = ft_itoa(++count);
 	if (!output)
 		exit(ft_free(g_d, ft_print_error("malloc failed", 1)));
-	mlx_string_put(g_d->mlx, g_d->window, 52, 15, 0x00FF0000, output);
+	mlx_string_put(g_d->mlx, g_d->wdw, 52, 15, 0x00FF0000, output);
 	free (output);
 	return (0);
 }
@@ -42,14 +42,14 @@ static int	ft_count_lines(char *map, t_data *g_d)
 	lines = 0;
 	current_line = get_next_line(fd);
 	if (current_line)
-		g_d->map.m_length = ft_strlen(current_line) - 1;
+		g_d->map.l = ft_strlen(current_line) - 1;
 	while (current_line)
 	{
 		lines++;
 		free(current_line);
 		current_line = get_next_line(fd);
 	}
-	g_d->map.m_height = lines;
+	g_d->map.h = lines;
 	close(fd);
 	return (lines);
 }
