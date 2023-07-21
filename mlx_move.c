@@ -6,7 +6,7 @@
 /*   By: apeposhi <apeposhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 14:06:57 by apeposhi          #+#    #+#             */
-/*   Updated: 2023/07/21 17:44:42 by apeposhi         ###   ########.fr       */
+/*   Updated: 2023/07/21 20:00:47 by apeposhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	ft_move(t_data *g_d, int i)
 			(g_d->map.x_p) * 64, (g_d->map.y_p) * 64 + 20);
 		mlx_put_image_to_window(g_d->mlx, g_d->window, g_d->images.player2,
 			(g_d->map.x_p) * 64, (g_d->map.y_p) * 64 + 20);
-		// check for enemy hitting
 	}
 }
 

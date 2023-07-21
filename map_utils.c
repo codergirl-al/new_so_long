@@ -6,7 +6,7 @@
 /*   By: apeposhi <apeposhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 15:40:53 by apeposhi          #+#    #+#             */
-/*   Updated: 2023/07/21 18:28:11 by apeposhi         ###   ########.fr       */
+/*   Updated: 2023/07/21 20:00:15 by apeposhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,8 @@ static char	**ft_get_map_data(char *map, int fd, t_data *g_d)
 
 	lines = ft_count_lines(map, g_d);
 	if (lines == -1)
-	{
 		return (ft_handle_return());
-	}
-	map_state = malloc(sizeof(char *) * lines + 1);
+	map_state = malloc(sizeof(char *) * (lines + 1));
 	if (!map_state)
 	{
 		ft_print_error("Malloc failed whilst reading map data.\n", 1);
@@ -97,7 +95,6 @@ int	ft_read_map(t_data *g_d, char *map)
 	if (!fd)
 		return (ft_print_error("Couldn't open map file.\n", 1));
 	g_d->c_state = ft_get_map_data(map, fd, g_d);
-
 	if (g_d->c_state == NULL)
 	{
 		close(fd);

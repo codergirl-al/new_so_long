@@ -1,5 +1,5 @@
 CC=cc
-CFLAGS=-Wall -Wextra -Werror
+CFLAGS=-Wall -Wextra -Werror -fsanitize=address -g
 
 CFILES=main.c utils.c map_utils.c map_validation.c ft_error_handling.c ft_is_map_winnable.c mlx_init.c mlx_move.c ft_hooks.c ft_move_functionalities.c
 OFILES=main.o utils.o map_utils.o map_validation.o ft_error_handling.o ft_is_map_winnable.o mlx_init.o mlx_move.o ft_hooks.o ft_move_functionalities.o

@@ -6,7 +6,7 @@
 /*   By: apeposhi <apeposhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 17:59:35 by apeposhi          #+#    #+#             */
-/*   Updated: 2023/07/21 17:58:05 by apeposhi         ###   ########.fr       */
+/*   Updated: 2023/07/21 20:05:07 by apeposhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	ft_check_middle(char c, t_data *g_d, size_t i, size_t j)
 {
-	if (j == 0 || j == g_d->map.m_length - 1) 
+	if (j == 0 || j == g_d->map.m_length - 1)
 	{
 		if (c != '1')
 			return (ft_print_error("Wrong map layout given.\n", 1));

@@ -6,7 +6,7 @@
 /*   By: apeposhi <apeposhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 10:24:31 by apeposhi          #+#    #+#             */
-/*   Updated: 2023/07/21 17:48:42 by apeposhi         ###   ########.fr       */
+/*   Updated: 2023/07/21 20:00:35 by apeposhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	ft_cleanup(t_data *g_d)
 {
+	if (g_d->mlx == NULL)
+		return ;
 	mlx_clear_window(g_d->mlx, g_d->window);
 	if (g_d->images.player)
 		mlx_destroy_image(g_d->mlx, g_d->images.player);

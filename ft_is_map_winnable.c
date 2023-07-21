@@ -6,11 +6,17 @@
 /*   By: apeposhi <apeposhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 09:42:34 by apeposhi          #+#    #+#             */
-/*   Updated: 2023/07/21 17:44:42 by apeposhi         ###   ########.fr       */
+/*   Updated: 2023/07/21 21:09:15 by apeposhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/so_long.h"
+
+char	**ft_handle_r(void)
+{
+	ft_print_error("Malloc failed.\n", 1);
+	return (NULL);
+}
 
 char	**ft_copy_state(t_map *map, char **state_copy)
 {
@@ -20,10 +26,7 @@ char	**ft_copy_state(t_map *map, char **state_copy)
 	cp_state_copy = malloc(sizeof(char *) * (map->m_height + 1));
 	cp_state_copy[map->m_height] = NULL;
 	if (cp_state_copy == NULL)
-	{
-		ft_print_error("Malloc failed.\n", 1);
-		return (NULL);
-	}
+		return (ft_handle_r());
 	i = 0;
 	while (i < map->m_height)
 	{
