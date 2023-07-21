@@ -6,11 +6,17 @@
 /*   By: apeposhi <apeposhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:43:02 by apeposhi          #+#    #+#             */
-/*   Updated: 2023/06/16 16:08:29 by apeposhi         ###   ########.fr       */
+/*   Updated: 2023/07/21 22:26:39 by apeposhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+char	*ft_handle_rtrn(char *s_buff)
+{
+	free(s_buff);
+	return (NULL);
+}
 
 char	*ft_get_read(char *s_buff)
 {
@@ -24,10 +30,7 @@ char	*ft_get_read(char *s_buff)
 		i++;
 	str = (char *)malloc(sizeof(char) * (i + 2));
 	if (!str)
-	{
-		free(s_buff);
-		return (NULL);
-	}
+		return (ft_handle_rtrn(s_buff));
 	i = 0;
 	while (s_buff[i] != '\0' && s_buff[i] != '\n')
 	{
@@ -57,7 +60,7 @@ char	*ft_get_buff(char *s_buff)
 		free(s_buff);
 		return (NULL);
 	}
-	str = (char *)malloc(sizeof(char) * (ft_gnl_strlen(s_buff) - i + 1));
+	str = (char *)malloc(sizeof(char) * (ft_g_strln(s_buff) - i + 1));
 	if (!str)
 	{
 		free(s_buff);

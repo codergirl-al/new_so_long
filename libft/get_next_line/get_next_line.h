@@ -6,7 +6,7 @@
 /*   By: apeposhi <apeposhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:43:05 by apeposhi          #+#    #+#             */
-/*   Updated: 2023/06/16 16:07:38 by apeposhi         ###   ########.fr       */
+/*   Updated: 2023/07/21 22:24:55 by apeposhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <fcntl.h>
 
 char	*get_next_line(int fd);
-size_t	ft_gnl_strlen(const char *s);
+size_t	ft_g_strln(const char *s);
 char	*ft_gnl_strjoin(char *s1, char *s2);
 char	*ft_gnl_strchr(const char *s, int c);
 

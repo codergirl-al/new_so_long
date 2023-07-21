@@ -6,7 +6,7 @@
 /*   By: apeposhi <apeposhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:43:00 by apeposhi          #+#    #+#             */
-/*   Updated: 2023/06/16 16:09:08 by apeposhi         ###   ########.fr       */
+/*   Updated: 2023/07/21 22:24:53 by apeposhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** @param str: a NULL-terminated string
 ** @return the length of the given string
 */
-size_t	ft_gnl_strlen(const char *s)
+size_t	ft_g_strln(const char *s)
 {
 	size_t	i;
 
@@ -52,7 +52,7 @@ char	*ft_gnl_strjoin(char *s1, char *s2)
 		return (NULL);
 	if (!s2)
 		return (s1);
-	res = (char *)malloc (ft_gnl_strlen(s1) + ft_gnl_strlen(s2) + 1 * sizeof(char));
+	res = (char *)malloc (ft_g_strln(s1) + ft_g_strln(s2) + 1 * sizeof(char));
 	if (res == NULL)
 		return (NULL);
 	i = -1;
@@ -61,7 +61,7 @@ char	*ft_gnl_strjoin(char *s1, char *s2)
 		res[i] = s1[i];
 	while (s2[j] != '\0')
 		res[i++] = s2[j++];
-	res[ft_gnl_strlen(s1) + ft_gnl_strlen(s2)] = '\0';
+	res[ft_g_strln(s1) + ft_g_strln(s2)] = '\0';
 	return (free(s1), res);
 }
 
